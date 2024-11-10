@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FauxFood | Anthony Dinunzio 2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(120deg, #ff6f61, #fbd84c);
+        }
+
+        .primary-bg {
+            background-color: #ff6f61; /* Soft Coral Red for warmth */
+        }
+
+        .accent-bg {
+            background-color: #ffffff77; /* Blue accent for vibrance */
+        }
+
+        .dark-text {
+            color: #333333; /* Dark text for readability */
+        }
+
+        .light-text {
+            color: #ffffff; /* White text for contrast */
+        }
+
+        .button-hover {
+            transition: all 0.3s ease;
+        }
+
+        .button-hover:hover {
+            transform: translateY(-4px);
+            background-color: #fbd84c;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Form styling */
+        input, textarea {
+            border-radius: 8px;
+            border: 2px solid #d1d5db;
+            padding: 12px;
+            width: 100%;
+        }
+
+        .cta-button {
+            background-color: #fbd84c;
+            color: #333;
+            padding: 16px 24px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #f9c340;
+            transform: translateY(-4px);
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #ff6f61, #fbd84c);
+            color: #fff;
+        }
+
+        .menu-bg{
+            background: transparent;
+        }
+
+        .white-text{
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white shadow-lg py-6">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <!-- Logo -->
+            <div class="text-4xl font-bold text-gray-800">
+                <h1>FauxFood</h1>
+            </div>
+
+            <!-- Mobile Menu Button (visible on small screens) -->
+            <nav x-data="{ open: false }" class="relative">
+                <button @click="open = !open" class="lg:hidden text-gray-800">
+                    <span class="block w-6 h-0.5 bg-gray-800 mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-gray-800 mb-1"></span>
+                </button>
+
+                <!-- Mobile Menu (visible when `open` is true) -->
+                <div :class="{'block': open, 'hidden': !open}" class="lg:hidden absolute top-0 left-0 w-full bg-white shadow-lg py-6 px-6">
+                    <a href="#home" class="text-gray-800 px-4 py-2 transition duration-300 transform hover:scale-105">Home</a>
+                    <a href="#about" class="text-gray-800 px-4 py-2 transition duration-300 transform hover:scale-105">About</a>
+                    <a href="#reserve" class="text-gray-800 px-4 py-2 transition duration-300 transform hover:scale-105">Reserve</a>
+                    <a href="#menu" class="text-gray-800 px-4 py-2 transition duration-300 transform hover:scale-105">Menu</a>
+                    <a href="#contact" class="text-gray-800 px-4 py-2 transition duration-300 transform hover:scale-105">Contact</a>
+                </div>
+            </nav>
+
+            <!-- Desktop Menu (visible on large screens) -->
+            <div class="hidden lg:flex space-x-8 text-lg">
+                <a href="#home" class="text-gray-800 hover:text-primary-bg transition duration-300 transform hover:scale-105">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-primary-bg transition duration-300 transform hover:scale-105">About</a>
+                <a href="#reserve" class="text-gray-800 hover:text-primary-bg transition duration-300 transform hover:scale-105">Reserve</a>
+                <a href="#menu" class="text-gray-800 hover:text-primary-bg transition duration-300 transform hover:scale-105">Menu</a>
+                <a href="#contact" class="text-gray-800 hover:text-primary-bg transition duration-300 transform hover:scale-105">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="menu-bg py-36 text-center">
+        <div class="container mx-auto">
+            <h3 class="text-5xl font-extrabold">Welcome to FauxFood</h3>
+            <p class="mt-4 text-lg max-w-xl mx-auto">Discover an unforgettable dining experience with our unique dishes and gourmet flavors.</p>
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="#reserve" class="cta-button">Reserve Now</a>
+                <a href="#menu" class="cta-button">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 menu-bg white-text text-center">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-semibold text-primary-bg">About Us</h2>
+            <p class="mt-4 text-lg ">We offer an innovative dining experience, driven by fresh ingredients and exceptional service.</p>
+            <div class="mt-12 grid md:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-xl font-semibold text-primary-bg">Our Vision</h4>
+                    <p class="mt-4 ">To lead the culinary world in creative and delicious dining experiences.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-primary-bg">The Future</h4>
+                    <p class="mt-4 ">We're expanding our footprint with franchises that bring our flavors to new cities.</p>
+                </div>
+                <div class="mt-20">
+                    <h4 class="text-xl font-semibold text-primary-bg">Our History</h4>
+                    <p class="mt-4 ">We're expanding our footprint with franchises that bring our flavors to new cities.</p>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-primary-bg">Meet the Team</h4>
+                    <div class="mt-4 grid md:grid-cols-3 gap-8">
+                        <!-- Team Members -->
+                        <div class="card-hover p-6 bg-white rounded-lg shadow-md">
+                            <img src="team1.jpg" alt="Team Member" class="w-32 h-32 rounded-full mb-4 mr-10">
+                            <h5 class="text-xl font-semibold text-primary-bg">John Doe</h5>
+                            <p class="text-gray-600">Founder & Executive Chef</p>
+                        </div>
+                        <div class="card-hover p-6 bg-white rounded-lg shadow-md">
+                            <img src="team2.jpg" alt="Team Member" class="w-32 h-32 rounded-full mb-4 mr-10">
+                            <h5 class="text-xl font-semibold text-primary-bg">Jane Smith</h5>
+                            <p class="text-gray-600">Operations Manager</p>
+                        </div>
+                        <div class="card-hover p-6 bg-white rounded-lg shadow-md">
+                            <img src="team3.jpg" alt="Team Member" class="w-32 h-32 rounded-full mb-4 mr-10">
+                            <h5 class="text-xl font-semibold text-primary-bg">Chris Lee</h5>
+                            <p class="text-gray-600">Sous Chef</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 menu-bg text-center">
+        <div class="container mx-auto">
+            <h4 class="text-4xl font-semibold text-primary-bg">Our Menu</h4>
+            <div class="mt-10 grid md:grid-cols-3 gap-12">
+                <!-- Menu Item -->
+                <div class="card-hover bg-white p-6 rounded-lg shadow-md mr-5 ml-5">
+                    <img src="food1.jpg" alt="Food Item" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h5 class="text-xl font-semibold text-primary-bg">Deluxe Burger</h5>
+                    <p class="text-gray-600">Juicy beef patty with cheddar cheese, lettuce, and our signature sauce.</p>
+                    <p class="text-lg font-semibold text-amber-500">$22.50</p>
+                </div>
+
+                <div class="card-hover bg-white p-6 rounded-lg shadow-md mr-5 ml-5">
+                    <img src="food1.jpg" alt="Food Item" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h5 class="text-xl font-semibold text-primary-bg">Chiken Burger</h5>
+                    <p class="text-gray-600">Juicy beef patty with cheddar cheese, lettuce, and our signature sauce.</p>
+                    <p class="text-lg font-semibold text-amber-500">$26.99</p>
+                </div>
+
+                <div class="card-hover bg-white p-6 rounded-lg shadow-md mr-5 ml-5">
+                    <img src="food1.jpg" alt="Food Item" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h5 class="text-xl font-semibold text-primary-bg">Poutine Burger</h5>
+                    <p class="text-gray-600">Juicy beef patty with cheddar cheese, lettuce, and our signature sauce.</p>
+                    <p class="text-lg font-semibold text-amber-500">$32.00</p>
+                </div>
+
+                <div class="card-hover bg-white p-6 rounded-lg shadow-md mr-5 ml-5">
+                    <img src="food1.jpg" alt="Food Item" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h5 class="text-xl font-semibold text-primary-bg">Poutine</h5>
+                    <p class="text-gray-600">Juicy beef patty with cheddar cheese, lettuce, and our signature sauce.</p>
+                    <p class="text-lg font-semibold text-amber-500">$14.99</p>
+                </div>
+
+                <div class="card-hover bg-white p-6 rounded-lg shadow-md mr-5 ml-5">
+                    <img src="food1.jpg" alt="Food Item" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h5 class="text-xl font-semibold text-primary-bg">Chicken Ceasar Salad</h5>
+                    <p class="text-gray-600">Juicy beef patty with cheddar cheese, lettuce, and our signature sauce.</p>
+                    <p class="text-lg font-semibold text-amber-500">$12.99</p>
+                </div>
+
+                <div class="card-hover bg-white p-6 rounded-lg shadow-md mr-5 ml-5">
+                    <img src="food1.jpg" alt="Food Item" class="w-full h-48 object-cover rounded-lg mb-6">
+                    <h5 class="text-xl font-semibold text-primary-bg">Spicy Chicken Wrap</h5>
+                    <p class="text-gray-600">Juicy beef patty with cheddar cheese, lettuce, and our signature sauce.</p>
+                    <p class="text-lg font-semibold text-amber-500">$27.50</p>
+                </div>
+                <!-- More menu items here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 menu-bg">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12">
+            <div class="ml-20">
+                <h4 class="text-4xl font-semibold text-primary-bg">Contact Us</h4>
+                <p class="mt-4 text-lg text-gray-600">We'd love to hear from you! Reach out for inquiries or reservations.</p>
+                <p class="mt-2 text-lg text-gray-600">+1 780-777-7762</p>
+                <p class="text-lg text-gray-600">fauxfood.contact@gmail.com</p>
+            </div>
+
+            <div>
+                <form id="contact-form" class="space-y-6">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                    <input type="text" name="phone" placeholder="Phone Number" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
