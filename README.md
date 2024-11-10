@@ -61,7 +61,7 @@ To set up the **FauxFood** website locally, follow these steps:
 
     Copy code
 
-    `git clone https://github.com/yourusername/fauxfood.git`
+    `git clone https://github.com/anthonydinunzioswe/fauxfood.git`
 
 2.  **Navigate to the project directory:**
 
